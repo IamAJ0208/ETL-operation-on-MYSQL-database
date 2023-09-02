@@ -1,0 +1,66 @@
+{
+    "transformations":[
+    {
+        "source_table": "actor",
+        "source_column": ["first_name","last_name"],
+        "target_column": "full_name",
+        "operation": "concat"
+    },
+
+    {
+
+        "source_table": "film",
+
+        "source_column": ["title","special_features","original_language_id"],
+
+        "operation": [{"title":"to_camelcase"},{"special_features":"drop"},{"original_language_id":"drop"}]
+
+    },
+
+    {
+
+        "source_table":"film_actor",
+
+        "source_column":"last_update",
+
+        "to_format":"%d-%m-%Y",
+
+        "operation":"change_format"
+
+    },
+
+    {
+
+        "source_table":"language",
+
+        "source_column":"last_update",
+
+        "target_column":["date","time"],
+
+        "operation":"split"
+
+    },
+
+    {
+
+        "source_table":["actor","film_actor","film"],
+
+        "target_table":"actor_film",
+
+        "on":["actor_id","film_id"],
+
+        "how":"inner",
+
+        "operation":"join"
+
+    }
+    
+    ],
+    "names":[
+    {
+        "extract_folder_name":"extracted_tables",
+        "transform_folder_name":"transformed_tables"
+    }
+    ]
+  
+}

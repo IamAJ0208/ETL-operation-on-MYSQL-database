@@ -1,0 +1,21 @@
+{
+    "extraction":[
+        {
+            "host":"localhost",
+            "username":"root",
+            "password":"amit",
+            "database":"sakila",
+            "file_name":"extracted_tables",
+            "table_names":["actor","film_actor","film","language"]
+        }],
+    "loading":[
+        {
+            "host":"localhost",
+            "username":"root",
+            "password":"amit",
+            "port":"3306",
+            "database_name":"target_db",
+            "transform_folder_name":"transformed_tables"
+        }
+    ]
+}
